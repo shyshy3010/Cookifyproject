@@ -1,0 +1,431 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: Arial, sans-serif;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+#wrapper {
+    margin: 0 auto;
+    width:90%;
+}
+.logo {
+    width: 200px;
+    height: 150px;
+    background-image: url('../images/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 0px; /* Réduit l'espace entre le logo et la barre de recherche */
+}
+
+.logo a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; 
+    background: transparent;
+}
+
+.search-bar {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    width: 450px;
+}
+
+.search-bar input {
+    width: 80%;
+    padding: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+nav{
+    float:left;
+    width: 32.446809%;
+    }
+.nav-menu li {
+    margin: 0 10px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: black;
+    padding: 10px 10px;
+    border-radius: 5px;
+}
+
+.nav-menu a.active {
+    font-weight: bold;
+}
+
+.userimg {
+    width: 72px;
+    height: 76px;
+    border-radius: 40px;
+}
+
+/* Style pour le bouton hamburger */
+.icon {
+    display: none; /* Caché par défaut */
+    font-size: 60px;
+    cursor: pointer;
+    margin-right:600px;
+    margin-top: 60px;
+    color: gray;
+    position: fixed;
+}
+
+/* Style pour le menu mobile */
+.mobile-menu {
+    display: none; /* Caché par défaut */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #fbfbfb;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    z-index: 10;
+    overflow-y: auto;
+    padding-top: 60px;
+}
+
+.mobile-menu a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 15px;
+}
+
+.mobile-menu .closebtn {
+    font-size: 36px;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+/* Affichage du bouton hamburger en mode mobile */
+@media (max-width: 768px) {
+    .header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        height: 150px;
+        width: 100%; /* Ajuste la largeur pour couvrir l'écran */
+        position: fixed;
+        padding: 0 10px;
+    }
+
+    .search-bar {
+        display: none;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+    .icon {
+        display: block;
+    }
+
+    .logo {
+        width: 100px;
+        height: 90px;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        margin-left: 100px;
+        margin-bottom: 50px;
+    }
+
+    .header-icons {
+        display: flex;
+        margin-top: 60px;
+    }
+
+    .userimg {
+        width: 50px;
+        height: 47px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        margin-left: 5px; 
+        margin-top: 60px;
+    }
+    .header-icons .notification-icon {
+       font-size: 30px;
+        margin-right: 10px;
+        cursor: pointer;
+        color: grey
+    }
+    .vertical-nav {
+        display: none;
+    }
+    .recipes-title h2
+    {
+        display: none;
+    }
+    .recipe-icon {
+        display: none;
+    }
+}
+/* Affichage en grand écran */
+@media (min-width: 769px) {
+    .header-icons {
+        display: none; /* Cache le conteneur des icônes en grand écran */
+    }
+}
+.vertical-nav {
+    background-color:#fbfbfb;
+    padding: 60px;
+    position: fixed;
+    left: 0;
+    bottom: 170 px;
+    overflow-y: auto;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+.vertical-nav ul {
+    list-style-type: none;
+}
+
+.vertical-nav li {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.vertical-nav a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    transition: background-color 0.3s;
+}
+.vertical-nav li a svg {
+    width: 32px;
+    height: 37px;
+    flex-shrink: 0;
+    margin-right: 10px; 
+}
+.vertical-nav a:hover {
+    background-color: #ddd;
+}
+.vertical-nav li::after {
+    content: "";
+    display: block;
+    width: 217px;
+    height: 1px;
+    background-color: #333;
+    opacity: 0.1;
+    position: absolute;
+    bottom: -10px; 
+    left: -30px; 
+}
+
+.vertical-nav li:last-child::after {
+    display: none; 
+}
+main{
+    float:left;
+    width: 62.765957%;
+    margin-left: 34.574469%;
+    padding: 3.389830%;
+    }
+.filter-bar {
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    width: 100%;
+    margin-left: 300px;
+}
+
+.filter-bar svg {
+    width: 54px;
+    height: 39px;
+    fill: black;
+}
+
+.filter-bar select {
+    flex: 1 1 auto;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    min-width: 120px;
+}
+
+.filter-bar button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+.filter-bar button:hover {
+    background-color: #45a049;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-bar select {
+       margin: 5px 0;
+    }
+
+    .filter-bar svg {
+        margin-bottom: 10px;
+    }
+
+    .filter-bar button {
+        width: 10px;
+        width: 100%;
+    }
+}
+@media (min-width: 321px) and (max-width: 479px) {
+    .filter-bar {
+        flex-direction: row; /* Affiche les filtres en ligne */
+        align-items: center;
+        justify-content: flex-start; /* Aligne les filtres au début */
+        flex-wrap: wrap; /* Permet aux filtres de passer à la ligne suivante si nécessaire */
+    }
+
+    .filter-bar select {
+        margin: 5px; /* Espacement entre les filtres */
+        min-width: 10px; /* Largeur minimale ajustée pour les écrans moyens */
+    }
+
+    .filter-bar svg {
+        margin-right: 15px; /* Espacement ajusté pour les écrans moyens */
+    }
+
+    .filter-bar button {
+        margin-left: 15px; /* Espacement ajusté pour les écrans moyens */
+    }
+}
+
+.recipe-icon {
+    width: 56px; /* Largeur du SVG */
+    height: 48px; /* Hauteur du SVG */
+    fill:#000; /* Couleur de remplissage, si applicable */
+    margin-right: 10px;
+    margin-top: 10px;
+}
+/* Recipes Title */
+.recipes-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-left: 300px;
+}
+
+.recipes-title h2 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.login-body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('../images/backgroundlogin.png'); /* Chemin vers votre image de fond */
+    background-size: cover; /* Pour couvrir toute la surface */
+    background-position: center; /* Centrer l'image */
+    background-repeat: no-repeat; /* Ne pas répéter l'image */
+}
+
+/* Styles pour le conteneur de login */
+.login-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Couleur de fond blanche semi-transparente */
+    padding: 80px 60px; /* Augmentation du padding */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Augmentation de la largeur maximale */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre les éléments horizontalement */
+}
+
+.login-container h1 {
+    margin-bottom: 40px; /* Réduction de la marge inférieure */
+}
+
+.login-container label {
+    display: block;
+    margin-bottom: 15px; /* Réduction de la marge inférieure */
+    font-weight: bold;
+    width: 100%; /* Prendre toute la largeur du conteneur */
+    text-align: left; /* Aligner le texte à gauche */
+}
+
+.login-container input {
+    width: 100%; /* Prendre toute la largeur du conteneur */
+    padding: 15px; /* Augmentation du padding */
+    margin-bottom: 30px; /* Augmentation de la marge inférieure */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-container button {
+    width: 50%; /* Prendre toute la largeur du conteneur */
+    padding: 15px; /* Augmentation du padding */
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px; /* Augmentation de la taille de la police */
+}
+
+.login-container button:hover {
+    background-color: green;
+}
+
+.register-link {
+    margin-top: 20px;
+}
+
+.register-link p {
+    margin: 0;
+}
+
+.register-link a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+/* style.css */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    display: none; /* Caché par défaut */
+}
