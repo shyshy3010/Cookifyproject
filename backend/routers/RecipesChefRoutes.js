@@ -1,23 +1,22 @@
 const express = require('express');
+const multer = require('multer');
 const router = express.Router();
-const connection = require('../backend/database.js'); 
+const recipesChefController = require('../controllers/recipesChefController');
 
-router.post('/add-recipe', (req, res) => {
-    const { title, ingredients, instructions, image_url, prep_time, cook_time, total_time, servings, difficulty, conservation, chef_id } = req.body;
-    const query = 'INSERT INTO recipes (title, ingredients, instructions, image_url, prep_time, cook_time, total_time, servings, difficulty, conservation, chef_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-    connection.query(query, [title, ingredients, instructions, image_url, prep_time, cook_time, total_time, servings, difficulty, conservation, chef_id], (err, results) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.status(201).json({ message: 'Recipe added successfully', recipeId: results.insertId });
-    });
-})
-
-router.get('/recipes/:chefId', (req, res) => {
-    const { chefId } = req.params;
-    const query = 'SELECT * FROM recipes WHERE chef_id = ?';
-    connection.query(query, [chefId], (err, results) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json(results);
-    });
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads');
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + '-' + file.originalname);
+    }
 });
+
+const upload = multer({ storage: storage });
+
+router.post('/recipes', upload.single('image_url'), recipesChefController.addRecipe);
+router.get('/recipes/:chefId', recipesChefController.getRecipesByChef);
+router.delete('/recipes/:id', recipesChefController.deleteRecipe);
+router.put('/recipes/:id', upload.single('image_url'), recipesChefController.updateRecipe);
 
 module.exports = router;
