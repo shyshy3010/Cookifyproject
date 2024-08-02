@@ -1,21 +1,23 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
+const loginRoutes = require('./routers/loginRoutes');
 const path = require('path');
-const loginRoutes = require('./routers/loginRoutes'); // Importer les routes de connexion
+const fs = require('fs');
 
 const app = express();
-const PORT = 3021;
-
-// Middleware pour analyser les corps des requêtes en JSON
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// Configuration pour servir des fichiers statiques
 app.use(express.static(path.join(__dirname, '../frontend')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/api/login', loginRoutes);
 
-// Utilisation des routes pour les connexions
-app.use('/api', loginRoutes);
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend', 'login.html'));
+});
 
-// Démarrer le serveur
+const PORT = process.env.PORT || 3162;
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
