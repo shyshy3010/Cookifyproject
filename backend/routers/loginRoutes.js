@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const loginController = require('../controllers/controllersLogin'); // Assurez-vous que ce chemin est correct
+const { login } = require('../controllers/controllersLogin');
 
-// Route POST pour la connexion
-router.post('/login', loginController.login);
+router.post('/login', login);
 
 module.exports = router;
