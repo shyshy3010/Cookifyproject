@@ -19,7 +19,7 @@ const login = async (req, res) => {
         const loggedInUser = user[0];
         res.json({
             message: 'Login successful',
-            userId: loggedInUser.user_id, // Assurez-vous que le nom du champ est correct
+            userId: loggedInUser.user_id, 
             permission: loggedInUser.permission
         });
     } catch (error) {
